@@ -18,7 +18,6 @@ __version__ = "$Revision: 11691 $"
 #--------------------------------
 
 import sys
-import math
 import numpy as np
 
 import matplotlib
