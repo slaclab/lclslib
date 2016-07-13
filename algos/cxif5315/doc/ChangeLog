@@ -1,0 +1,148 @@
+#--------------------------------------------------------------------------
+# File and Version Information:
+#  $Id: ChangeLog 1404 2016-05-13 22:54:26Z dubrovin@SLAC.STANFORD.EDU $
+#
+# Description:
+#  ChangeLog file for package cxif5315
+#------------------------------------------------------------------------
+
+Please describe any modifications that you made to the package in the
+reverse time order.
+#------------------------------
+Tag: V00-00-15
+2016-05-13 Mikhail Dubrovin
+- proc-cxif5315-r0169-data-pfvn-2016-05-03.py - apply common mode correction with cmpars=(5,50)
+- proc-cxif5315-r0169-peaks-from-file-v5.py - tune selection parameters before indexing
+- proc-cxif5315-r0169-idx-file.py - indexing for new data. Select matched or non-matched peaks.
+
+Tag: V00-00-14
+2016-05-10 Mikhail Dubrovin
+- update/tune analysis script for updated pfv3r1
+A       proc-cxif5315-r0169-data-pfvn-2016-05-03.py
+M       proc-cxif5315-r0169-peaks-from-file-v5.py
+	
+Tag: V00-00-13
+2016-05-02 Mikhail Dubrovin
+- update scripts for image processing in accordance with current understanding:
+   - if radial background subtraction is applied, 
+      - polarization correction map should be oriented in accordance with geometry (rotated +/-90 degree)
+      - algorithm should be applied to the portion of image which shows good angular symmetry selecting r-phi ranges.
+   - background shape should be evaluated WITHOUT common mode correction.
+   - normalized background shape subtraction shows the best results.   
+- proc-cxif5315-r0169-peaks-from-file-v6.py - deleted as redundant.
+- proc-cxif5315-r0169-peaks-from-file-v5.py - analysis in progress update
+	
+Tag: V00-00-12
+2016-04-29 Mikhail Dubrovin
+- analysis in progress update
+  proc-cxif5315-r0169-data-pfvn-2016-04-19.py
+  proc-cxif5315-r0169-peaks-from-file-v5.py
+  proc-cxif5315-r0169-peaks-from-file-v6.py - will be depricated as redundant repetitionn of v5
+	
+Tag: V00-00-11
+2016-04-21 Mikhail Dubrovin
+- proc-cxif5315-r0169-data-pfv4.py - fix alg_equ.peak_finder_v4 -> alg_arc.peak_finder_v4
+- add proc-cxif5315-r0169-data-pfvn-2016-04-19.py - works for pfv2,3,4 revision 1
+- proc-cxif5315-r0169-peaks-from-file-v5.py - analysis in progress update
+- proc-cxif5315-r0169-peaks-from-file-v6.py - analysis in progress update
+
+#------------------------------
+Tag: V00-00-10
+2016-04-14 Mikhail Dubrovin
+- proc-cxif5315-r0169-peaks-from-file-v4.py - fix initialization of sp.d_2peak
+- add proc-cxif5315-r0169-peaks-from-file-v5.py - fit to phi-beta for l=1 peaks
+	
+Tag: V00-00-09
+2016-04-06 Mikhail Dubrovin
+- add proc-cxif5315-r0169-peaks-fit-file-v1.py
+	
+#------------------------------
+Tag: V00-00-08
+2016-04-04 Mikhail Dubrovin
+See for detail file cxif5315/README
+M       README
+M       make-index-table-v2.py
+A  +    masks/2016-02-04-roi-mask-nda-equ.txt
+        > moved from masks/2016-02-04-roi_mask_nda-equ.txt
+D       masks/2016-02-04-roi_mask_nda-equ.txt
+        > moved to masks/2016-02-04-roi-mask-nda-equ.txt
+A       masks/2016-03-28-roi-mask-nda-arc.txt
+A       masks/2016-03-28-roi-mask-nda-equ-arc.txt
+A       masks/2016-03-28-roi-mask-nda-equ.txt
+A       peak-list-comp-cheetah.py
+M       proc-cxif5315-r0169-data-pfv4-equ.py
+A       proc-cxif5315-r0169-data-pfvn-2016-03-28.py
+A       proc-cxif5315-r0169-peaks-from-file-v4.py
+
+#------------------------------
+Tag: V00-00-07
+2016-02-10 Mikhail Dubrovin
+- make-index-table-v2.py add call to plot_lattice with movie for rotating lattice 
+- plot-lattice-from-data.py change algorithm for transformation qh_to_xy(qh,R), add convolution of image in plot_xy_lattice
+	
+#------------------------------
+Tag: V00-00-06
+2016-02-05 Mikhail Dubrovin
+- plot-lattice-from-data.py - completed, update README
+	
+#------------------------------
+Tag: V00-00-05
+2016-02-05 Mikhail Dubrovin
+- work in progress on cross-checks
+- add make-index-table-v2.py, 
+      masks/2016-02-04-roi_mask_nda-equ.txt, 
+      plot-lattice-from-data.py,
+      proc-cxif5315-r0169-data-pfv4-equ.py
+
+#------------------------------
+Tag: V00-00-04 - mistakenly skipped at tagging...
+#------------------------------
+Tag: V00-00-03
+2016-02-01 Mikhail Dubrovin
+- add README - file with hints
+- add proc-cxif5315-r0169-data-pfv4.py - example for alg_equ.peak_finder_v4
+
+#------------------------------
+Tag: V00-00-02
+2015-12-01 Mikhail Dubrovin
+- rename old script useng "v1" to: proc-cxif5315-r0169-peaks-from-file-v1.py
+- add proc-cxif5315-r0169-peaks-from-file-v3.py - analysis with fraser transformation for beta=0
+- in proc-cxif5315-r0169-idx-file.py add indexed omega and beta histograms, and use these angles for event selection
+
+#------------------------------
+Tag: V00-00-01
+2015-11-18 Mikhail Dubrovin
+- update make-index-table.py and proc-cxif5315-r0169-idx-file.py
+    - the 1st wersion of script examples for entire data processing including
+	1. proc-cxif5315-r0169-data.py - loop over events in data file, find peaks, save peaks in file,
+	2. make-index-table.py - make lookup table for expected crystal lattice,
+        3. proc-cxif5315-r0169-peaks-from-file-v2.py - do event indexing here save results in file.
+        4. proc-cxif5315-r0169-idx-file.py - loop over indexed events and make summary of results and plots.
+
+2015-11-12 Mikhail Dubrovin
+- add proc-cxif5315-r0169-idx-file.py
+- update proc-cxif5315-r0169-data, proc-cxif5315-r0169-peaks-from-file*
+
+2015-11-11 Mikhail Dubrovin
+- update make-index-table.py and proc-cxif5315-r0169-peaks-from-file-v2.py
+
+2015-11-05 Mikhail Dubrovin
+- add make-index-table.py - user-controllable part of the pyimgalgos.FiberIndexing
+- polishing proc-cxif5315-r0169-peaks-from-file-v2.py
+
+2015-11-02 Mikhail Dubrovin
+- add proc-cxif5315-r0169-peaks-from-file-v2.py
+
+2015-09-23 Mikhail Dubrovin
+- add proc-cxif5315-r0169-data.py
+      proc-cxif5315-r0169-peaks-from-file.py
+      doc/ChangeLog
+
+2015-09-00 cpo
+- create package with
+	classSummary.py
+	classSummaryPlot.py
+	masks/
+	peakfind.py
+
+#------------------------------

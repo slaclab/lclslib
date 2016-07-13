@@ -6,8 +6,8 @@ Usage::
 
     # Import
     # ==============
-    from pyimgalgos.GlobalUtils import subtract_bkgd, mask_from_windows #, ...
-    from pyimgalgos.NDArrGenerators import random_standard_array
+    from algos.core.GlobalUtils import subtract_bkgd, mask_from_windows #, ...
+    from algos.core.NDArrGenerators import random_standard_array
 
     # Background subtraction
     # ======================
@@ -473,7 +473,7 @@ cspad_ndarr_from_table8x8 = cspad_ndarr_from_table
 ##-----------------------------
 
 def test_01() :
-    from pyimgalgos.NDArrGenerators import random_standard
+    from algos.core.NDArrGenerators import random_standard
 
     print '%s\n%s\n' % (80*'_','Test method subtract_bkgd(...):')
     shape1 = (32,185,388)
@@ -533,8 +533,8 @@ def test_07() :
 
 def test_08() :
     from time import time
-    import pyimgalgos.GlobalGraphics as gg
-    from pyimgalgos.NDArrGenerators import random_standard
+    import algos.graph.GlobalGraphics as gg
+    from algos.core.NDArrGenerators import random_standard
 
     print '%s\n%s\n' % (80*'_','Test method locxymax(nda, order, mode):')
     #data = random_standard(shape=(32,185,388), mu=0, sigma=10)
@@ -561,7 +561,7 @@ def test_09() :
 ##-----------------------------
 
 def test_10() :
-    from pyimgalgos.NDArrGenerators import random_standard
+    from algos.core.NDArrGenerators import random_standard
 
     image = random_standard()
     verbosity=True

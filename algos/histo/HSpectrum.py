@@ -7,7 +7,7 @@ Usage::
 
     # Import
     # ==============
-    from pyimgalgos.HSpectrum import HSpectrum
+    from algos.histo.HSpectrum import HSpectrum
 
 
     # Initialization
@@ -56,7 +56,7 @@ __version__ = "$Revision: 11999 $"
 
 import sys
 import numpy as np
-from pyimgalgos.HBins import HBins
+from algos.histo.HBins import HBins
 
 #------------------------------
 
@@ -155,7 +155,7 @@ def example_equidistant() :
 
 
     if True :
-      import pyimgalgos.GlobalGraphics as gg
+      import algos.graph.GlobalGraphics as gg
       
       histarr, edges, nbins = spec.spectrum()
       #gg.plotImageLarge(arr, amp_range=(vmin,vmax), title='random')
@@ -184,7 +184,7 @@ def example_varsize() :
 
 
     if True :
-      import pyimgalgos.GlobalGraphics as gg
+      import algos.graph.GlobalGraphics as gg
 
       histarr, edges, nbins = spec.spectrum()
       #gg.plotImageLarge(arr, amp_range=(vmin,vmax), title='random')

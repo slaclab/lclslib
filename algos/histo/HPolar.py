@@ -7,7 +7,7 @@ Usage::
 
     # Import
     # ------
-    from pyimgalgos.HPolar import HPolar
+    from algos.histo.HPolar import HPolar
 
     # Initialization
     # --------------
@@ -37,7 +37,7 @@ Usage::
 
     # Global methods
     # --------------
-    from pyimgalgos.HPolar import polarization_factor, divide_protected, cart2polar, polar2cart, bincount
+    from algos.histo.HPolar import polarization_factor, divide_protected, cart2polar, polar2cart, bincount
 
     polf = polarization_factor(rad, phi, z)
     result = divide_protected(num, den, vsub_zero=0)
@@ -66,7 +66,7 @@ __version__ = "$Revision: 11999 $"
 
 import math
 import numpy as np
-from pyimgalgos.HBins import HBins
+from algos.histo.HBins import HBins
 
 #------------------------------
 
@@ -190,7 +190,7 @@ class HPolar() :
     def print_ndarrs(self) :
         print '%s n-d arrays:' % self.__class__.__name__
         if self.print_ndarr is None :
-            from Detector.GlobalUtils import print_ndarr
+            from algos.core.GlobalUtils import print_ndarr
             self.print_ndarr = print_ndarr
         self.print_ndarr(self.rad, '  rad')
         self.print_ndarr(self.phi, '  phi')
@@ -371,7 +371,7 @@ def test01(ntest, prefix='fig-v01') :
     """Test for radial 1-d binning of entire image.
     """
     from time import time
-    import pyimgalgos.GlobalGraphics as gg
+    import algos.graph.GlobalGraphics as gg
     from PSCalib.GeometryAccess import img_from_pixel_arrays
 
     arr, geo = data_geo(ntest)
@@ -433,7 +433,7 @@ def test02(ntest, prefix='fig-v01') :
     """
     #from Detector.GlobalUtils import print_ndarr
     from time import time
-    import pyimgalgos.GlobalGraphics as gg
+    import algos.graph.GlobalGraphics as gg
     from PSCalib.GeometryAccess import img_from_pixel_arrays
 
     arr, geo = data_geo(ntest)
@@ -496,7 +496,7 @@ def test03(ntest, prefix='fig-v01') :
     """Test for 2-d binning of the restricted rad-phi range of entire image
     """
     from time import time
-    import pyimgalgos.GlobalGraphics as gg
+    import algos.graph.GlobalGraphics as gg
     from PSCalib.GeometryAccess import img_from_pixel_arrays
 
     arr, geo = data_geo(ntest)

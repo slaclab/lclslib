@@ -1,0 +1,83 @@
+---------------------
+Updated on 2016-04-06
+---------------------
+
+Files
+=====
+1. generator of the look-up table
+---------------------------------
+make-index-table.py - basic
+make-index-table-v2.py - split tolerance parameter sigma_q for two sigma_ql, sigma_qt,
+                         add plots for lattice and crystal lattice rotation movie.
+
+2. data processing with peak-finders of different versions
+----------------------------------------------------------
+proc-cxif5315-r0169-data-pfv2.py - flud-filling
+proc-cxif5315-r0169-data-pfv3.py - rank-seeds
+proc-cxif5315-r0169-data-pfv4.py - two-threshold replaces pfv1
+proc-cxif5315-r0169-data-pfv4-equ.py - process peaks in equatorial region only (new mask, 4-2x1 only) to speed-up test job
+proc-cxif5315-r0169-data-pfvn-2016-03-28.py - works with pfv2,3,4 in about similar conditions, uses new masks from 2016-03-28
+proc-cxif5315-r0169-data-pfvn-2016-04-19.py - works with pfv2,3,4 revision 1
+proc-cxif5315-r0169-data-pfvn-2016-05-03.py - works with pfv2,3,4 revision 1, tuned peak selection parameters for pfv3r1
+
+3. process peaks from file, use look-up table, generate plots and index file
+----------------------------------------------------------------------------
+proc-cxif5315-r0169-peaks-from-file-v1.py - 1st version
+proc-cxif5315-r0169-peaks-from-file-v2.py - version with better structured code using TDFileContainer
+proc-cxif5315-r0169-peaks-from-file-v3.py - variation of parameters for v2 
+proc-cxif5315-r0169-peaks-from-file-v4.py - 2016-04-04 - works with all pfv2,3,4; 
+                                            evaluate phi-beta fit parameter erros, fit quality, save the in the peak list   
+proc-cxif5315-r0169-peaks-from-file-v5.py - variation of v4 to work with mengs' list of peaks w/o selection
+
+3(ext). process peaks with fit info from file and plot/save histograms for fit parameters
+-----------------------------------------------------------------------------------------
+proc-cxif5315-r0169-peaks-fit-file-v1.py
+
+4. process index file
+---------------------
+proc-cxif5315-r0169-idx-file.py
+
+5. cross-check for look-up table, plot for lattice
+--------------------------------------------------
+plot-lattice-from-data.py 
+
+6. comparison of the list of peaks from Cheetah with peakfinders
+----------------------------------------------------------------
+peak-list-comp-cheetah.py
+
+
+
+2016-02-01 Mikhail Dubrovin
+===========================
+
+Open and initialize session
+---------------------------
+ssh -X pslogin.slac.stanford.edu
+ssh -X psana
+source /reg/g/psdm/etc/ana_env.sh
+cd <one-of-your-work-directories>
+
+
+Make local release directory and get analysis package
+-----------------------------------------------------
+newrel ana-current rel-analysis-cxif5315
+cd rel-analysis-cxif5315
+sit_setup
+addpkg -u cxif5315
+addpkg pyimgalgos HEAD
+
+cxif5315/plot-lattice-from-data.py
+cxif5315/make-index-table-v2.py
+...
+
+How to run scripts
+------------------
+# Interactive data processing from local release directory:
+python cxif5315/proc-cxif5315-r0169-data-pfv4.py
+
+# submit job in batch:
+bsub -q psfehq -o log-r169.log python cxif5315/proc-cxif5315-r0169-data-pfv4.py
+
+Check data types in xtc file
+----------------------------
+event_keys event_keys -d exp=cxif5315:run=169 -p EventKey 
