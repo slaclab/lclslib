@@ -1,33 +1,22 @@
 ---------------------
-Updated on 2016-04-06
+Updated on 2016-07-13
 ---------------------
 
 Files
 =====
 1. generator of the look-up table
 ---------------------------------
-make-index-table.py - basic
-make-index-table-v2.py - split tolerance parameter sigma_q for two sigma_ql, sigma_qt,
-                         add plots for lattice and crystal lattice rotation movie.
+make-index-table-v3.py - copy of psana users package cxif5315 v2 with appropriate replacement of imports to lclslib
 
 2. data processing with peak-finders of different versions
 ----------------------------------------------------------
-proc-cxif5315-r0169-data-pfv2.py - flud-filling
-proc-cxif5315-r0169-data-pfv3.py - rank-seeds
-proc-cxif5315-r0169-data-pfv4.py - two-threshold replaces pfv1
-proc-cxif5315-r0169-data-pfv4-equ.py - process peaks in equatorial region only (new mask, 4-2x1 only) to speed-up test job
-proc-cxif5315-r0169-data-pfvn-2016-03-28.py - works with pfv2,3,4 in about similar conditions, uses new masks from 2016-03-28
-proc-cxif5315-r0169-data-pfvn-2016-04-19.py - works with pfv2,3,4 revision 1
-proc-cxif5315-r0169-data-pfvn-2016-05-03.py - works with pfv2,3,4 revision 1, tuned peak selection parameters for pfv3r1
+NEEDS DATA
+proc-cxif5315-r0169-data-pfvn-2016-05-03.py - original version of psana users package cxif5315
 
 3. process peaks from file, use look-up table, generate plots and index file
 ----------------------------------------------------------------------------
-proc-cxif5315-r0169-peaks-from-file-v1.py - 1st version
-proc-cxif5315-r0169-peaks-from-file-v2.py - version with better structured code using TDFileContainer
-proc-cxif5315-r0169-peaks-from-file-v3.py - variation of parameters for v2 
-proc-cxif5315-r0169-peaks-from-file-v4.py - 2016-04-04 - works with all pfv2,3,4; 
-                                            evaluate phi-beta fit parameter erros, fit quality, save the in the peak list   
-proc-cxif5315-r0169-peaks-from-file-v5.py - variation of v4 to work with mengs' list of peaks w/o selection
+proc-cxif5315-r0169-peaks-from-file-v6.py - copy of psana users package cxif5315 v5 with appropriate replacement of imports to lclslib
+proc-cxif5315-r0169-peaks-from-file-2016-07-13.py - try to improve indexing efficiency
 
 3(ext). process peaks with fit info from file and plot/save histograms for fit parameters
 -----------------------------------------------------------------------------------------
@@ -45,6 +34,33 @@ plot-lattice-from-data.py
 ----------------------------------------------------------------
 peak-list-comp-cheetah.py
 
+
+Usage of lclslib
+================
+
+1. Cloning lclslib package from github
+--------------------------------------
+mkdir <github-work>
+cd <github-work>
+git clone https://github.com/slaclab/lclslib.git
+
+2. Usage of modules from lclslib along with other libs (numpy, scipy, matplotlib, etc.)
+sit_setup
+export PYTHONPATH=<github-work>/lclslib:${PYTHONPATH}
+
+Aactual case:
+sit_setup
+export PYTHONPATH=/reg/neh/home/dubrovin/LCLS/github-work/lclslib:${PYTHONPATH}
+
+3. Importing modules
+import algos.graph.GlobalGraphics as gg
+
+4. Run something from <github-work>/lclslib/exp/cxif5315
+Example:
+/reg/neh/home/dubrovin/LCLS/github-work/lclslib/exp/cxif5315/make-index-table-v3.py
+/reg/neh/home/dubrovin/LCLS/github-work/lclslib/exp/cxif5315/proc-cxif5315-r0169-peaks-from-file-v6.py
+/reg/neh/home/dubrovin/LCLS/github-work/lclslib/exp/cxif5315/proc-cxif5315-r0169-idx-file.py
+...
 
 
 2016-02-01 Mikhail Dubrovin
